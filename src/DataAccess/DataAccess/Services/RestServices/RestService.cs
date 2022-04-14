@@ -4,9 +4,9 @@ using Serilog;
 
 namespace DataAccess.Services.RestServices
 {
-    public class RestService<T>
+    public class RestService<T> : IRestService<T>
     {
-        public async Task<T> Get(string endpoint, string method, int id)
+        public async Task<T> GetAsync(string endpoint, string method, int id)
         {
             var client = new RestClient(endpoint);
             var request = new RestRequest($"{method}/{id}");
@@ -24,7 +24,7 @@ namespace DataAccess.Services.RestServices
             }
         }
 
-        public async Task<ApiResponse<T>> GetAll(string endpoint, string method, int page)
+        public async Task<ApiResponse<T>> GetAllAsync(string endpoint, string method, int page)
         {
             var client = new RestClient(endpoint);
             var request = new RestRequest(method);

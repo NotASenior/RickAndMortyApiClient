@@ -1,0 +1,19 @@
+﻿@page "/characters"
+@inherits CharactersBase
+
+<div class="row">
+    <div class="col">
+        <ul>
+            @if (Characters != null)
+            {
+                foreach (var character in Characters.Results)
+                {
+                    <li>
+                        <img src="@character.Image" alt="" />
+                        @character.Name
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</div>

@@ -6,7 +6,7 @@ using Entities.Episodes;
 
 namespace Business.Episodes
 {
-    internal class EpisodeService : IEpisodeService
+    public class EpisodeService : IEpisodeService
     {
         private readonly IMapper mapper;
         private readonly IEpisodeRepository repository;
