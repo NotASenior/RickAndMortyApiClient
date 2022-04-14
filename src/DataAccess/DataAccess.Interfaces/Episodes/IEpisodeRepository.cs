@@ -5,7 +5,7 @@ namespace DataAccess.Interfaces.Episodes
 {
     public interface IEpisodeRepository
     {
-        Episode Get(int id);
-        Paginated<Episode> GetAll(int page);
+        Task<Episode> GetAsync(int id);
+        Task<Paginated<Episode>> GetAllAsync(int page);
     }
 }
