@@ -2,10 +2,8 @@
 using DataAccess.CrossCutting.Api;
 using DataAccess.Interfaces.Characters;
 using DataAccess.Interfaces.CrossCutting;
-using DataAccess.Services.RestService.Models;
 using DataAccess.Services.RestServices;
 using DataAccess.Services.RestServices.Static;
-using Entities.Characters;
 
 namespace DataAccess.Characters
 {
@@ -23,18 +21,15 @@ namespace DataAccess.Characters
             this.restService = restService;
         }
 
-        public async Task<Character> GetAsync(int id)
+        public Task<CharacterModel> GetAsync(int id)
         {
-            CharacterModel response = await restService.GetAsync(endpoint, method, id);
-            Character entity = mapper.Map<Character>(response);
-
-            return entity;
+            return restService.GetAsync(endpoint, method, id);
         }
 
-        public async Task<Paginated<Character>> GetAllAsync(int page)
+        public async Task<Paginated<CharacterModel>> GetAllAsync(int page)
         {
             ApiResponse<CharacterModel>? response = await restService.GetAllAsync(endpoint, method, page);
-            Paginated<Character> entities = mapper.Map<Paginated<Character>>(response);
+            Paginated<CharacterModel> entities = mapper.Map<Paginated<CharacterModel>>(response);
 
             return entities;
         }

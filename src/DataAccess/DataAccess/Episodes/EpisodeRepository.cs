@@ -2,10 +2,8 @@
 using DataAccess.CrossCutting.Api;
 using DataAccess.Interfaces.CrossCutting;
 using DataAccess.Interfaces.Episodes;
-using DataAccess.Services.RestService.Models;
 using DataAccess.Services.RestServices;
 using DataAccess.Services.RestServices.Static;
-using Entities.Episodes;
 
 namespace DataAccess.Episodes
 {
@@ -23,18 +21,15 @@ namespace DataAccess.Episodes
             this.restService = restService;
         }
 
-        public async Task<Episode> GetAsync(int id)
+        public Task<EpisodeModel> GetAsync(int id)
         {
-            EpisodeModel response = await restService.GetAsync(endpoint, method, id);
-            Episode entity = mapper.Map<Episode>(response);
-
-            return entity;
+            return restService.GetAsync(endpoint, method, id);
         }
 
-        public async Task<Paginated<Episode>> GetAllAsync(int page)
+        public async Task<Paginated<EpisodeModel>> GetAllAsync(int page)
         {
             ApiResponse<EpisodeModel>? response = await restService.GetAllAsync(endpoint, method, page);
-            Paginated<Episode> entities = mapper.Map<Paginated<Episode>>(response);
+            Paginated<EpisodeModel> entities = mapper.Map<Paginated<EpisodeModel>>(response);
 
             return entities;
         }

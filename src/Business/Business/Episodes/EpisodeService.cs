@@ -17,14 +17,20 @@ namespace Business.Episodes
             this.repository = repository;
         }
 
-        public Task<Paginated<Episode>> GetAllAsync(int page)
+        public async Task<Paginated<Episode>> GetAllAsync(int page)
         {
-            return repository.GetAllAsync(page);
+            Paginated<EpisodeModel>? location = await repository.GetAllAsync(page);
+            Paginated<Episode> mappedEpisodes = mapper.Map<Paginated<Episode>>(location);
+
+            return mappedEpisodes;
         }
 
-        public Task<Episode> GetAsync(int id)
+        public async Task<Episode> GetAsync(int id)
         {
-            return repository.GetAsync(id);
+            EpisodeModel location = await repository.GetAsync(id);
+            Episode mappedEpisode = mapper.Map<Episode>(location);
+
+            return mappedEpisode;
         }
     }
 }

@@ -17,14 +17,20 @@ namespace Business.Characters
             this.repository = repository;
         }
 
-        public Task<Paginated<Character>> GetAllAsync(int page)
+        public async Task<Paginated<Character>> GetAllAsync(int page)
         {
-            return repository.GetAllAsync(page);
+            Paginated<CharacterModel>? location = await repository.GetAllAsync(page);
+            Paginated<Character> mappedCharacters = mapper.Map<Paginated<Character>>(location);
+
+            return mappedCharacters;
         }
 
-        public Task<Character> GetAsync(int id)
+        public async Task<Character> GetAsync(int id)
         {
-            return repository.GetAsync(id);
+            CharacterModel location = await repository.GetAsync(id);
+            Character mappedCharacter = mapper.Map<Character>(location);
+
+            return mappedCharacter;
         }
     }
 }

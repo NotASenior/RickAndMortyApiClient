@@ -17,14 +17,20 @@ namespace Business.Locations
             this.repository = repository;
         }
 
-        public Task<Paginated<Location>> GetAllAsync(int page)
+        public async Task<Paginated<Location>> GetAllAsync(int page)
         {
-            return repository.GetAllAsync(page);
+            Paginated<LocationModel>? location = await  repository.GetAllAsync(page);
+            Paginated<Location> mappedLocations = mapper.Map<Paginated<Location>>(location);
+
+            return mappedLocations;
         }
 
-        public Task<Location> GetAsync(int id)
+        public async Task<Location> GetAsync(int id)
         {
-            return repository.GetAsync(id);
+            LocationModel location = await repository.GetAsync(id);
+            Location mappedLocation = mapper.Map<Location>(location);
+
+            return mappedLocation;
         }
     }
 }
