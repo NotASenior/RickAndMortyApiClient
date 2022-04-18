@@ -1,5 +1,5 @@
-﻿using AutoMapper;
-using DataAccess.CrossCutting.Api;
+﻿using DataAccess.CrossCutting.Api;
+using DataAccess.CrossCutting.Mappers;
 using DataAccess.Interfaces.CrossCutting;
 using DataAccess.Interfaces.Locations;
 using DataAccess.Services.RestServices;
@@ -12,24 +12,24 @@ namespace DataAccess.Locations
         private readonly string endpoint = ApiUrls.Endpoint;
         private readonly string method = ApiUrls.Location;
 
-        private readonly IMapper mapper;
-        private readonly IRestService<LocationModel> restService;
+        private readonly IApiResponseMapper mapper;
+        private readonly IRestService<LocationDto> restService;
 
-        public LocationRepository(IMapper mapper, IRestService<LocationModel> restService)
+        public LocationRepository(IApiResponseMapper mapper, IRestService<LocationDto> restService)
         {
             this.mapper = mapper;
             this.restService = restService;
         }
 
-        public Task<LocationModel> GetAsync(int id)
+        public Task<LocationDto> GetAsync(int id)
         {
             return restService.GetAsync(endpoint, method, id);
         }
 
-        public async Task<Paginated<LocationModel>> GetAllAsync(int page)
+        public async Task<Paginated<LocationDto>> GetAllAsync(int page)
         {
-            ApiResponse<LocationModel>? response = await restService.GetAllAsync(endpoint, method, page);
-            Paginated<LocationModel> entities = mapper.Map<Paginated<LocationModel>>(response);
+            ApiResponse<LocationDto>? response = await restService.GetAllAsync(endpoint, method, page);
+            Paginated<LocationDto> entities = mapper.Map<LocationDto>(response);
 
             return entities;
         }

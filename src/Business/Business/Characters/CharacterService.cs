@@ -19,7 +19,7 @@ namespace Business.Characters
 
         public async Task<Paginated<Character>> GetAllAsync(int page)
         {
-            Paginated<CharacterModel>? location = await repository.GetAllAsync(page);
+            Paginated<CharacterDto>? location = await repository.GetAllAsync(page);
             Paginated<Character> mappedCharacters = mapper.Map<Paginated<Character>>(location);
 
             return mappedCharacters;
@@ -27,7 +27,7 @@ namespace Business.Characters
 
         public async Task<Character> GetAsync(int id)
         {
-            CharacterModel location = await repository.GetAsync(id);
+            CharacterDto location = await repository.GetAsync(id);
             Character mappedCharacter = mapper.Map<Character>(location);
 
             return mappedCharacter;

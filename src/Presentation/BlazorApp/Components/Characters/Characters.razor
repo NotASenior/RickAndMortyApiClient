@@ -6,11 +6,21 @@
         <ul>
             @if (Characters != null)
             {
-                foreach (var character in Characters.Results)
+                foreach (Character character in Characters.Results)
                 {
                     <li>
                         <img src="@character.Image" alt="" />
-                        @character.Name
+                        @character.Name <br>
+                        @character.Created <br>
+                        @character.Episodes <br>
+                        @character.Gender <br>
+                        @character.Id <br>
+                        @character.Location.Name <br>
+                        @character.Origin.Name <br>
+                        @character.Species <br>
+                        @character.Status <br>
+                        @character.Type <br>
+                        @character.Url <br>
                     </li>
                 }
             }

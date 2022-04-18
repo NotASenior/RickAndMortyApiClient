@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace DataAccess.Interfaces.Episodes
 {
     [DataContract]
-    public class EpisodeModel : ModelBase
+    public class EpisodeDto : ModelBase
     {
         public string? Name { get; set; }
 

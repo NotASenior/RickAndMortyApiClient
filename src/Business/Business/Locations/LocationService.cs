@@ -19,7 +19,7 @@ namespace Business.Locations
 
         public async Task<Paginated<Location>> GetAllAsync(int page)
         {
-            Paginated<LocationModel>? location = await  repository.GetAllAsync(page);
+            Paginated<LocationDto>? location = await  repository.GetAllAsync(page);
             Paginated<Location> mappedLocations = mapper.Map<Paginated<Location>>(location);
 
             return mappedLocations;
@@ -27,7 +27,7 @@ namespace Business.Locations
 
         public async Task<Location> GetAsync(int id)
         {
-            LocationModel location = await repository.GetAsync(id);
+            LocationDto location = await repository.GetAsync(id);
             Location mappedLocation = mapper.Map<Location>(location);
 
             return mappedLocation;

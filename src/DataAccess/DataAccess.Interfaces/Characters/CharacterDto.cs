@@ -2,7 +2,7 @@
 
 namespace DataAccess.Interfaces.Characters
 {
-    public class CharacterModel : ModelBase
+    public class CharacterDto : ModelBase
     {
         public string? Name { get; set; }
         public string? Status { get; set; }

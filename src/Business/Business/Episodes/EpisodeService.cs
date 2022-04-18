@@ -19,7 +19,7 @@ namespace Business.Episodes
 
         public async Task<Paginated<Episode>> GetAllAsync(int page)
         {
-            Paginated<EpisodeModel>? location = await repository.GetAllAsync(page);
+            Paginated<EpisodeDto>? location = await repository.GetAllAsync(page);
             Paginated<Episode> mappedEpisodes = mapper.Map<Paginated<Episode>>(location);
 
             return mappedEpisodes;
@@ -27,7 +27,7 @@ namespace Business.Episodes
 
         public async Task<Episode> GetAsync(int id)
         {
-            EpisodeModel location = await repository.GetAsync(id);
+            EpisodeDto location = await repository.GetAsync(id);
             Episode mappedEpisode = mapper.Map<Episode>(location);
 
             return mappedEpisode;

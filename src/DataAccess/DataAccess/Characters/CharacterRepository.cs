@@ -1,5 +1,5 @@
-﻿using AutoMapper;
-using DataAccess.CrossCutting.Api;
+﻿using DataAccess.CrossCutting.Api;
+using DataAccess.CrossCutting.Mappers;
 using DataAccess.Interfaces.Characters;
 using DataAccess.Interfaces.CrossCutting;
 using DataAccess.Services.RestServices;
@@ -12,24 +12,24 @@ namespace DataAccess.Characters
         private readonly string endpoint = ApiUrls.Endpoint;
         private readonly string method = ApiUrls.Character;
         
-        private readonly IMapper mapper;
-        private readonly IRestService<CharacterModel> restService;
+        private readonly IApiResponseMapper mapper;
+        private readonly IRestService<CharacterDto> restService;
 
-        public CharacterRepository(IMapper mapper, IRestService<CharacterModel> restService)
+        public CharacterRepository(IApiResponseMapper mapper, IRestService<CharacterDto> restService)
         {
             this.mapper = mapper;
             this.restService = restService;
         }
 
-        public Task<CharacterModel> GetAsync(int id)
+        public Task<CharacterDto> GetAsync(int id)
         {
             return restService.GetAsync(endpoint, method, id);
         }
 
-        public async Task<Paginated<CharacterModel>> GetAllAsync(int page)
+        public async Task<Paginated<CharacterDto>> GetAllAsync(int page)
         {
-            ApiResponse<CharacterModel>? response = await restService.GetAllAsync(endpoint, method, page);
-            Paginated<CharacterModel> entities = mapper.Map<Paginated<CharacterModel>>(response);
+            ApiResponse<CharacterDto>? response = await restService.GetAllAsync(endpoint, method, page);
+            Paginated<CharacterDto> entities = mapper.Map<CharacterDto>(response);
 
             return entities;
         }

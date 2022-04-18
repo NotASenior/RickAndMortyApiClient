@@ -2,7 +2,7 @@
 
 namespace DataAccess.Interfaces.Locations
 {
-    public class LocationModel : ModelBase
+    public class LocationDto : ModelBase
     {
         public string? Name { get; set; }
         public string? Type { get; set; }

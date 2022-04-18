@@ -5,7 +5,7 @@ namespace DataAccess.Interfaces.Characters
 {
     public interface ICharacterRepository
     {
-        Task<CharacterModel> GetAsync(int id);
-        Task<Paginated<CharacterModel>> GetAllAsync(int page);
+        Task<CharacterDto> GetAsync(int id);
+        Task<Paginated<CharacterDto>> GetAllAsync(int page);
     }
 }

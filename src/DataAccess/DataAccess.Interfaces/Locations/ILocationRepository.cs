@@ -5,7 +5,7 @@ namespace DataAccess.Interfaces.Locations
 {
     public interface ILocationRepository
     {
-        Task<LocationModel> GetAsync(int id);
-        Task<Paginated<LocationModel>> GetAllAsync(int page);
+        Task<LocationDto> GetAsync(int id);
+        Task<Paginated<LocationDto>> GetAllAsync(int page);
     }
 }
