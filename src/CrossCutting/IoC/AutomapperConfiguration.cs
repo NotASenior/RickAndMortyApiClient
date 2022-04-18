@@ -9,20 +9,28 @@ namespace IoC
 {
     public abstract class AutomapperConfiguration
     {
-        public static IMapper GetMapper()
+        public static MapperConfiguration GetConfig()
         {
-            var config = new MapperConfiguration(cfg =>
+            return new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<CharacterDto, Character>()
                 .ForMember(nameof(Character.Episodes), to => to.MapFrom(nameof(CharacterDto.Episode)));
                 cfg.CreateMap<NameUrlModel, NameUrl>();
-                cfg.CreateMap(typeof(Paginated<>), typeof(Paginated<>));
+                cfg.CreateMap(typeof(Paginated<>), typeof(Paginated<>))
+                    .ForMember("Prev", opt => opt.Ignore())
+                    .ForMember("Next", opt => opt.Ignore());
                 cfg.CreateMap(typeof(ApiResponse<>), typeof(Paginated<>))
-                    .ForMember("Count", to => to.MapFrom("Info.Count"))
-                    .ForMember("Pages", to => to.MapFrom("Info.Pages"));
+                    .ForMember("Count", opt => opt.MapFrom("Info.Count"))
+                    .ForMember("Pages", opt => opt.MapFrom("Info.Pages"))
+                    .ForMember("Prev", opt => opt.Ignore())
+                    .ForMember("Next", opt => opt.Ignore());
                 ;
             });
-            
+        }
+
+        public static IMapper GetMapper()
+        {
+            var config = GetConfig();
             return config.CreateMapper();
         }
     }
