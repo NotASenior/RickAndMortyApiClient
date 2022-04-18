@@ -18,6 +18,7 @@ using DataAccess.Locations;
 using DataAccess.Services.RestServices;
 using Entities.Characters;
 using Entities.CrossCutting;
+using IoC;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
@@ -62,23 +63,7 @@ static void RegisterDependencies(WebApplicationBuilder builder)
     builder.Services.AddScoped<ILocationService, LocationService>();
     builder.Services.AddScoped(typeof(IRestService<>), typeof(RestService<>));
 
-    RegisterAutoMapper(builder);
-}
-
-static void RegisterAutoMapper(WebApplicationBuilder builder)
-{
-    var config = new MapperConfiguration(cfg =>
-    {
-        cfg.CreateMap<CharacterDto, Character>()
-        .ForMember(nameof(Character.Episodes), to => to.MapFrom(nameof(CharacterDto.Episode)));
-        cfg.CreateMap<NameUrlModel, NameUrl>();
-        cfg.CreateMap(typeof(Paginated<>), typeof(Paginated<>));
-        cfg.CreateMap(typeof(ApiResponse<>), typeof(Paginated<>))
-            .ForMember("Count", to => to.MapFrom("Info.Count"))
-            .ForMember("Pages", to => to.MapFrom("Info.Pages"));
-        ;
-    });
-    var mapper = config.CreateMapper();
+    var mapper = AutomapperConfiguration.GetMapper();
 
     builder.Services.AddSingleton(mapper);
 }

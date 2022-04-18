@@ -29,7 +29,7 @@ namespace DataAccess.Episodes
         public async Task<Paginated<EpisodeDto>> GetAllAsync(int page)
         {
             ApiResponse<EpisodeDto>? response = await restService.GetAllAsync(endpoint, method, page);
-            Paginated<EpisodeDto> entities = mapper.Map<EpisodeDto>(response);
+            Paginated<EpisodeDto> entities = mapper.Map(response);
 
             return entities;
         }

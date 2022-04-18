@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp", "src\Presentati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess.Tests", "tests\DataAccess\DataAccess\DataAccess.Tests.csproj", "{7C675C0D-A4E9-48B9-BEA3-44795895B7F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoC", "src\CrossCutting\IoC\IoC.csproj", "{F3060BE5-D4B4-4D2A-BF34-A78F259EC90D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{7C675C0D-A4E9-48B9-BEA3-44795895B7F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C675C0D-A4E9-48B9-BEA3-44795895B7F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C675C0D-A4E9-48B9-BEA3-44795895B7F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3060BE5-D4B4-4D2A-BF34-A78F259EC90D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3060BE5-D4B4-4D2A-BF34-A78F259EC90D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3060BE5-D4B4-4D2A-BF34-A78F259EC90D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3060BE5-D4B4-4D2A-BF34-A78F259EC90D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +91,7 @@ Global
 		{2D7500FF-730F-4EB5-87B8-52A1E0311083} = {422131CB-AA58-42B9-BBD6-531EF0D64BDF}
 		{7566B36B-EFC7-47E0-B10E-607953EF862F} = {4E13565F-AF50-4D27-A8E5-A361FE0F127F}
 		{7C675C0D-A4E9-48B9-BEA3-44795895B7F4} = {4E14E91F-6A86-45DC-8E84-FA7AFEAF5B16}
+		{F3060BE5-D4B4-4D2A-BF34-A78F259EC90D} = {AED01031-2F04-4E75-A292-808EDF3E4524}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {11FFFC38-3EAE-4E44-813C-2218C82075A0}

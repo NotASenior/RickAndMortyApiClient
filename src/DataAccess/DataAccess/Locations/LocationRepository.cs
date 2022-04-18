@@ -29,7 +29,7 @@ namespace DataAccess.Locations
         public async Task<Paginated<LocationDto>> GetAllAsync(int page)
         {
             ApiResponse<LocationDto>? response = await restService.GetAllAsync(endpoint, method, page);
-            Paginated<LocationDto> entities = mapper.Map<LocationDto>(response);
+            Paginated<LocationDto> entities = mapper.Map(response);
 
             return entities;
         }
