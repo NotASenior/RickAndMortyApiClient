@@ -20,7 +20,7 @@ namespace DataAccess.Tests.Episodes
             var apiResponseMapper = new ApiResponseMapper(mapper);
             var repository = new EpisodeRepository(apiResponseMapper, restServiceMock.Object);
 
-            var character = repository.GetAsync(It.IsAny<int>()).GetAwaiter().GetResult();
+            var location = repository.GetAsync(It.IsAny<int>()).GetAwaiter().GetResult();
 
             restServiceMock
                 .Verify(m => m.GetAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>()), Times.Once);
@@ -33,7 +33,7 @@ namespace DataAccess.Tests.Episodes
             var apiResponseMapperMock = new Mock<IApiResponseMapper>();
             var repository = new EpisodeRepository(apiResponseMapperMock.Object, restServiceMock.Object);
 
-            var charactersResponse = repository.GetAllAsync(It.IsAny<int>()).GetAwaiter().GetResult();
+            var locationsResponse = repository.GetAllAsync(It.IsAny<int>()).GetAwaiter().GetResult();
 
             apiResponseMapperMock
                 .Verify(m => m.Map(It.IsAny<ApiResponse<EpisodeDto>>()), Times.Once);
