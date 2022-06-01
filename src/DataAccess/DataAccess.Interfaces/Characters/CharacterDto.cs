@@ -12,6 +12,6 @@ namespace DataAccess.Interfaces.Characters
         public NameUrlModel? Origin { get; set; }
         public NameUrlModel? Location { get; set; }
         public string? Image { get; set; }
-        public IEnumerable<string?>? Episode { get; set; }
+        public IEnumerable<string>? Episode { get; set; }
     }
 }

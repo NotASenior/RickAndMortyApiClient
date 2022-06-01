@@ -12,13 +12,13 @@ namespace BlazorApp.Components.Characters
 
 
         [Inject]
-        protected ICharacterService Service { get; set; }
+        protected ICharacterService? Service { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
             base.OnInitialized();
 
-            Characters = await Service.GetAllAsync(page);
+            Characters = await Service!.GetAllAsync(page);
         }
     }
 }

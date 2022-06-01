@@ -2,6 +2,6 @@
 {
     public class Paginated<T> : PaginatedBase
     {
-        public IEnumerable<T?>? Results { get; set; }
+        public IEnumerable<T>? Results { get; set; }
     }
 }

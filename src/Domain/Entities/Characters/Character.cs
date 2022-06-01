@@ -12,6 +12,6 @@ namespace Entities.Characters
         public NameUrl? Origin { get; set; }
         public NameUrl? Location { get; set; }
         public string? Image { get; set; }
-        public IEnumerable<string?>? Episodes { get; set; }
+        public IEnumerable<string>? Episodes { get; set; }
     }
 }
